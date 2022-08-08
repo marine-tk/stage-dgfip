@@ -1,0 +1,18 @@
+service : api-3
+runtime: custom # indique à App Engine qu'il faut trouver un Dockerfile à exécuter
+env: flex
+entrypoint: gunicorn -b :$PORT app:app
+
+resources:
+ cpu: 1
+ memory_gb: 6
+ disk_size_gb: 200
+
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /static
+  static_dir: static
+- url: /.*
+  script: app.app
