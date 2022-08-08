@@ -43,7 +43,7 @@ import seaborn as sn
 
 def modele_random_forest():
     
-    df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/Extraction tweets/Bases de données/scrapping_avis_all.csv')
+    df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/Extraction tweets/Bases de données/database.csv')
     
     df = df[df['Sentiment'] != 'Neutre']
     
