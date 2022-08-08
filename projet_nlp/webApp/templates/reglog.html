@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse de sentiment</title>
+    <link href="{{ url_for('static',filename='styles/TF-IDF.css') }}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/dacaccb093.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    {% include 'nav.html' %}
+    {% block content %}
+      
+    <main>
+
+      <section id="analyse">
+      <center>
+          <h1>Analyseur de sentiment avec TF-IDF
+
+              
+          </h1>
+      </center>
+
+      <center>
+        <div class="input-group">
+          <form method="post" action="/reglog">
+            <input type="text" placeholder="Entrez une phrase" id="phrase" name="reglog">
+            <button type="submit" name="submit_button" id="" value="Submit" class="btm">Analyser</button>
+          </form>
+        </div>
+        <span>
+          {{ str_predict|safe }}
+        </span>
+      </center>
+
+      
+
+      <img src="{{ url_for('static',filename='im1.png') }}" height="400" alt="image">
+
+      </section>
+      
+
+    </main>
+    {% endblock %}
+    
+</body>
+</html>

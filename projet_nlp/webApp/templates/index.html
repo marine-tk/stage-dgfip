@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Analyseur de Sentiment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static',filename='styles/index.css') }}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/dacaccb093.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    {% block content %}
+    <main>
+      <center>
+        <h1>Bienvenue sur notre application d'analyse de sentiments</h1>
+      </center>
+      <p>
+        <center>
+          Dans le cadre de notre stage au sein de la Direction Générale des Finances Publiques dans le pôle DTNum, nous avons conçu une application web supportant notre modèle de NLP. Le NLP est une discipline plutôt récente du machine learning permettant de traiter des données textuelles. Ainsi, nous avions pour mission d'implémenter un algorithme de machine learning capable d'interpréter le sentiment dégagée par une phrase : ce sentiment peut être soit positif, soit négatif. Nous vous invitions à explorer davantage cette application pour mieux comprendre ces notions.
+        </center>
+      </p>
+      <p>
+        <center>
+          L'objectif de cette application est de vous permettre de tester par vous même cette application en choisissant votre modèle de <em>Word Embedding</em>. Vous pouvez également lire notre méthodologie ou nous contacter en cliquant sur les icons correspondant dans la barre de navigation.
+        </center>
+      </p>
+      <center>
+        <video autoplay loop muted height="400" name="media">
+            <source src="{{ url_for('static', filename='video.mp4') }}" type="video/mp4">
+          </video>
+      </center>
+
+      
+      </main>
+      {% endblock %}
+  </body>
+</html>

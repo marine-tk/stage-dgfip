@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/dacaccb093.js" crossorigin="anonymous"></script>
+      </head>
+    <body>
+        
+        {% block navbar %}
+        
+        <nav class="navbar">
+          <ul class="navbar-menu">
+            <li class="navbar-item logo">
+              <a href="/" class="navbar-link">
+                <span class="navbar-title">Menu</span>
+                <i class="fas fa-chevron-right navbar-icon"></i>
+              </a>
+            </li>
+            <li class="navbar-item">
+              <a href="/" class="navbar-link">
+                <i class="fas fa-home navbar-icon"></i>
+                <span class="navbar-title">Accueil</span>
+              </a>
+            </li>
+            <li class="navbar-item">
+              <a href="/bert" class="navbar-link">
+                <i class="fas fa-solid fa-cheese navbar-icon"></i>
+                <span class="navbar-title">CamemBERT</span>
+              </a>
+            </li>
+            <li class="navbar-item">
+              <a href="/reglog" class="navbar-link">
+                <i class="fas fa-solid fa-robot navbar-icon"></i>
+                <span class="navbar-title">TF-IDF</span>
+              </a>
+            </li>
+            </li>
+            <li class="navbar-item">
+              <a href="/fasttext" class="navbar-link">
+                <i class="fas fa-solid fa-bolt navbar-icon"></i>
+                <span class="navbar-title">FastText</span>
+              </a>
+            </li>
+            <li class="navbar-item">
+              <a href="/method" class="navbar-link">
+                <i class="fas fa-solid fa-person-chalkboard navbar-icon"></i>
+                <span class="navbar-title">Méthodologie</span>
+              </a>
+            </li>
+            <li class="navbar-item">
+              <a href="/nous" class="navbar-link">
+                <i class="fas fa-solid fa-people-group navbar-icon"></i>
+                <span class="navbar-title">Nous</span>
+              </a>
+            </li>
+      
+            <li class="navbar-item">
+              <a href="/contact" class="navbar-link">
+                <i class="fas fa-phone navbar-icon"></i>
+                <span class="navbar-title">Nous contacter</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        {% endblock %}
+
+      
+    </body>
+</html>

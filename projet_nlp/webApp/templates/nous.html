@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse de sentiment</title>
+    <link href="{{ url_for('static',filename='styles/nous.css') }}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/dacaccb093.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  {% include 'nav.html' %}
+    {% block content %}
+  
+    <div>
+      <center>
+        <h1>Qui sommes nous ?</h1>
+      </center>
+    </div>
+    <div class="class1" >
+      <p>Marine <font color="#7C4DFF">TSEN KUNG</font> </p>
+      <br>
+      <p>21 ans</p>
+      <p>Étudiante en 3ème année à École Nationale Supérieure de l'Électronique et de ses Applications (ENSEA)</p>
+      <center><img src="{{ url_for('static',filename='marine.png') }}" height="300" alt="image"></center>
+    </div>
+    <div class="class2" >
+      <p>Geoffroy <font color="#7C4DFF">PERONNE</font></p>
+      <br>
+      <p>22 ans</p>
+      <p>Étudiant en double diplôme à l'École Natioanle de la Statistique et de l'Administration Économique (ENSAE) et à HEC Paris</p>
+      <center><img src="{{ url_for('static',filename='geoffroy.png') }}" height="300" alt="image"></center>
+    </div>
+    <div class="class3">
+      <p>Mathieu <font color="#7C4DFF">BARTHELEMY</font></p>
+      <br>
+      <p>22 ans</p>
+      <p>Étudiant en 4ème année à l'École Supérieure d'Ingénieurs en Électrotechnique et Électronique (ESIEE)</p>
+      <center><img src="{{ url_for('static',filename='mathieu.png') }}" height="300" alt="image"></center>
+    </div>
+  {% endblock %}
+</body>
+</html>
