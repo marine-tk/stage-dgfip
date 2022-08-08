@@ -81,7 +81,7 @@ def test(sentences):
         
 def visualisation(n):
     
-    df = pd.read_csv('/content/scrapping_avis_all.csv') #.sample(5000).reset_index(drop=True)
+    df = pd.read_csv('/content/database.csv') #.sample(5000).reset_index(drop=True)
 
     del df['Unnamed: 0']
 
