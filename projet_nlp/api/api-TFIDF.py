@@ -54,8 +54,6 @@ if __name__ == '__main__':
         port = 12345
 
     lr = joblib.load("model_tfidf.pkl") # le modèle doit être dans le même répertoire que le code
-    print ('Model loaded')
-    model_columns = joblib.load("model_columns.pkl")
-    print ('Model columns loaded')
+    print ('Modèle téléchargé')
 
     app.run(port=port, debug=True,use_reloader=False,host="0.0.0.0")
