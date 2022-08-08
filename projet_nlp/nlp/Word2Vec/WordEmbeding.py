@@ -1,13 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 24 19:44:28 2022
-
-@author: geoffroyperonne
-"""
-
 ## Importation des librairies
-
 
 import pandas as pd
 
@@ -23,11 +14,15 @@ from nltk.corpus import stopwords
 
 from gensim.models import keyedvectors
 
+# Chemin vers la base de données database.csv
+path = '/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/Extraction tweets/Bases de données/'
 
+# Chemin vers le dictionnaire Word2Vec
+path2 = '/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/'
 
 def preprocessing():
 
-    df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/Extraction tweets/Bases de données/scrapping_avis_all.csv')
+    df = pd.read_csv(path+'scrapping_avis_all.csv')
 
     corpus = df['Avis'].tolist()
 
@@ -49,7 +44,7 @@ def preprocessing():
     
     ## A récupérer sur internet 
 
-    trained = keyedvectors.load_word2vec_format('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/frwiki_20180420_300d.txt.bz2', binary=False)
+    trained = keyedvectors.load_word2vec_format(path2+'frwiki_20180420_300d.txt.bz2', binary=False)
 
     return(trained,corpus_sw)
 
@@ -86,7 +81,7 @@ def avis2vec(avis, trained, corpus):
 
 def corpus2vec():
     
-    df_init = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/Extraction tweets/Bases de données/scrapping_avis_all.csv')
+    df_init = pd.read_csv(path+'scrapping_avis_all.csv')
 
     trained, corpus = preprocessing()
     
