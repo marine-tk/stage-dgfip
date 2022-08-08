@@ -46,6 +46,8 @@ def preprocessing():
     mots_vides = stopwords.words("french")
 
     corpus_sw = [[mot for mot in avis if not (mot in mots_vides)] for avis in corpus_lm]
+    
+    ## A récupérer sur internet 
 
     trained = keyedvectors.load_word2vec_format('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/frwiki_20180420_300d.txt.bz2', binary=False)
 
