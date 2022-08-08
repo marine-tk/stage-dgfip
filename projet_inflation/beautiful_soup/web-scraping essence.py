@@ -90,19 +90,16 @@ def decomposition_prix_valeur():
     print('Fichier valeur_100 CSV enregistré')
 
 def upload_to_bucket(blob_name, path_to_file, bucket_name):
-    """ Transfert du fichier blob_name, issu du répertoire path_to_file dans le bucket bucket_name"""
+    """ Transfert du fichier blob_name, issu du répertoire path_to_file dans le bucket bucket_name """
      
     # Clé JSON générée sur GCP dans la rubrique IAM et admin
     storage_client = storage.Client.from_service_account_json('key_file.json')
 
-    #print(buckets = list(storage_client.list_buckets())
-
     bucket = storage_client.get_bucket(bucket_name)
     blob = bucket.blob(blob_name)
     blob.upload_from_filename(path_to_file)
-    
-    #returns a public url
     print("Le fichier a bien été enregistré dans le bucket ",bucket_name)
+    
     return blob.public_url
  
 def execute_all() :
