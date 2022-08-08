@@ -9,8 +9,8 @@ import sys
 from sklearn.pipeline import make_pipeline 
 from sklearn.feature_extraction.text import TfidfTransformer, CountVectorizer
 from imblearn.over_sampling import RandomOverSampler
-from reglog import predict_reglog
-from testb import predict_fasttext
+from tfidf import predict_reglog
+from fasttext import predict_fasttext
 from bert import predict_bert
 
 # Création de l'application Flask
