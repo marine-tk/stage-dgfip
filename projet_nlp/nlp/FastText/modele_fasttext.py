@@ -78,7 +78,7 @@ def to_text(df,filename) :
            
 def model_fasttext():
    
-    df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/Extraction tweets/Bases de données/scrapping_avis_all.csv')
+    df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/Extraction tweets/Bases de données/database.csv')
     
     df = df[df['Sentiment'] != 'Neutre'] # ne garder que le positif ou négatif
     
