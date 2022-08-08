@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 24 22:42:06 2022
-
-@author: geoffroyperonne
-"""
-
 ## Importation des librairies
 
 import pandas as pd 
@@ -32,12 +24,14 @@ import matplotlib.pyplot as plt
 
 import seaborn as sn
 
+### À modifier selon l'environnement d'exécution
+path = '/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/Données/'
 
 ## Modèle Random Forest
 
 def modele_random_forest():
     
-    df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/Données/Encodage_Word2Vec(300d).csv')
+    df = pd.read_csv(path+'Encodage_Word2Vec(300d).csv')
     
     df = df[df['Sentiment'] != 'Neutre']
     
@@ -73,7 +67,7 @@ def modele_random_forest():
 
 def modele_logistic_regression():
     
-    df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/Données/Encodage_Word2Vec(300d).csv')
+    df = pd.read_csv(path+'Encodage_Word2Vec(300d).csv')
     
     df = df[df['Sentiment'] != 'Neutre']
     
@@ -106,7 +100,7 @@ def modele_logistic_regression():
 
 def modele_gradient_boosting():
     
-    df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/Données/Encodage_Word2Vec(300d).csv')
+    df = pd.read_csv(path+'Encodage_Word2Vec(300d).csv')
  
     df = df[df['Sentiment'] != 'Neutre']
  
@@ -137,7 +131,7 @@ def modele_gradient_boosting():
 
 def modele_neural_network():
     
-    df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/Données/Encodage_Word2Vec(300d).csv')
+    df = pd.read_csv(path+'Encodage_Word2Vec(300d).csv')
  
     df = df[df['Sentiment'] != 'Neutre']
  
@@ -168,7 +162,7 @@ def modele_neural_network():
 
 def modele_SVC():
     
-    df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/Données/Encodage_Word2Vec(300d).csv')
+    df = pd.read_csv(path+'Encodage_Word2Vec(300d).csv')
  
     df = df[df['Sentiment'] != 'Neutre']
  
@@ -291,7 +285,7 @@ def best_parameters(modele):
     
     if modele == 'tree':
     
-        df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/Données/Encodage_Word2Vec(300d).csv')
+        df = pd.read_csv(path+'Encodage_Word2Vec(300d).csv')
             
         df = df[df['Sentiment'] != 'Neutre']
             
@@ -319,7 +313,7 @@ def best_parameters(modele):
 
     if modele == 'regression logistique':
     
-        df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/Données/Encodage_Word2Vec(300d).csv')
+        df = pd.read_csv(path+'Encodage_Word2Vec(300d).csv')
             
         df = df[df['Sentiment'] != 'Neutre']
             
@@ -352,7 +346,7 @@ def best_parameters(modele):
         
     if modele == 'gradient':
     
-        df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/Données/Encodage_Word2Vec(300d).csv')
+        df = pd.read_csv(path+'Encodage_Word2Vec(300d).csv')
             
         df = df[df['Sentiment'] != 'Neutre']
             
@@ -380,7 +374,7 @@ def best_parameters(modele):
 
     if modele == 'neuronne':
     
-        df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/Données/Encodage_Word2Vec(300d).csv')
+        df = pd.read_csv(path+'Encodage_Word2Vec(300d).csv')
             
         df = df[df['Sentiment'] != 'Neutre']
             
@@ -407,7 +401,7 @@ def best_parameters(modele):
     
     if modele == 'SVC':
     
-        df = pd.read_csv('/Users/geoffroyperonne/Desktop/DGFiP/Projet Analyse tweet/NLP/Représentation Word2Vec/Données/Encodage_Word2Vec(300d).csv')
+        df = pd.read_csv(path+'Encodage_Word2Vec(300d).csv')
             
         df = df[df['Sentiment'] != 'Neutre']
             
