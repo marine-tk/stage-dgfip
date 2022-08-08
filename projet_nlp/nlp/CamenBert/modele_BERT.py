@@ -44,7 +44,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 #%%
 
 # Load the dataset, I selected only 5000 sample because of memory limitation
-df = pd.read_csv('/content/scrapping_avis_all.csv') #.sample(5000).reset_index(drop=True)
+df = pd.read_csv('/content/database.csv') #.sample(5000).reset_index(drop=True)
 
 del df['Unnamed: 0']
 
