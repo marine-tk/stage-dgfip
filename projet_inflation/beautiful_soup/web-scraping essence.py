@@ -5,13 +5,23 @@ import pandas as pd
 from datetime import datetime
 from google.cloud import storage
 
+# Chemin où le script, key_file.json et le fichier CSV initial se trouvent
+path = "/home/marinetk/scripts/"
+
+# Chemin où sont enregistrés les fichiers CSV
+path_prix = "/home/marinetk/prix_essence/"
+path_valeur100 = "/home/marinetk/valeur_100_essence/"
+
+# Dossier contenant les fichiers temporaires
+path_tmp = "/home/marinetk/scripts/tmp/"
+
 def departement_price(text) :
     '''
     Fonction séparant dans une liste les prix de l'essence et le nom du département associé
     Par exemple text = "Ain (01)2,063€2,104€2,061€1,990€0,873€0,912€"
     Retour de la fonction  = ['Ain_01', [2.063, 2.104, 2.061, 1.99, 0.873]]
     '''
-    
+   
     list_price = []
     list_text = text.split('€')
     
@@ -21,11 +31,13 @@ def departement_price(text) :
             departement = departement.replace('(','_')
             departement = departement.replace(' ','')
             text = text.split(')')[1]
+            
         text = text.replace(',','.')   
         if text != '' :
             list_price.append(float(text))
             
         list_price_sans_GPL = list_price[0:5]
+        
     return [departement,list_price_sans_GPL]
 
 def create_dataframe() :
@@ -58,11 +70,11 @@ def create_dataframe() :
 def decomposition_prix_valeur():
     ''' Conversion en base 100 et création des fichiers CSV '''
     
-    df_init = pd.read_csv("essence_init_bis_05-07-2022.csv")
+    df_init = pd.read_csv(path+"essence_init_bis_05-07-2022.csv")
     df = create_dataframe()
     
-    df.to_csv("temporary_to_delete.csv")
-    df = pd.read_csv("temporary_to_delete.csv")
+    df.to_csv(path_tmp+"temporary_to_delete.csv")
+    df = pd.read_csv(path_tmp+"temporary_to_delete.csv")
    
     new_df = df.copy()
     
@@ -80,21 +92,20 @@ def decomposition_prix_valeur():
     
     df = df.rename(columns= {'Unnamed: 0' : 'Département'})
     new_df = new_df.rename(columns= {'Unnamed: 0' : 'Département'})
-     
-    # Ce chemin est celui pris dans la machine virtuelle
-    path = '/home/marinetk/'
-    df.to_csv(path+'prix_essence/'+'prix' + datetime.today().strftime('%Y-%m-%d') + '.csv')
+    
+    df.to_csv(path_prix+'prix_essence' + datetime.today().strftime('%Y-%m-%d') + '.csv')
     print('Fichier des prix CSV enregistré')
    
-    new_df.to_csv(path+'valeur_100_essence/'+'valeur_100_essence' + datetime.today().strftime('%Y-%m-%d') + '.csv')
+    new_df.to_csv(path_valeur100+'valeur_100_essence' + datetime.today().strftime('%Y-%m-%d') + '.csv')
     print('Fichier valeur_100 CSV enregistré')
 
 def upload_to_bucket(blob_name, path_to_file, bucket_name):
     """ Transfert du fichier blob_name, issu du répertoire path_to_file dans le bucket bucket_name """
      
     # Clé JSON générée sur GCP dans la rubrique IAM et admin
-    storage_client = storage.Client.from_service_account_json('key_file.json')
+    storage_client = storage.Client.from_service_account_json(path+'key_file.json')
 
+    
     bucket = storage_client.get_bucket(bucket_name)
     blob = bucket.blob(blob_name)
     blob.upload_from_filename(path_to_file)
@@ -113,5 +124,7 @@ def execute_all() :
   decomposition_prix_valeur()
 
   # Transfert vers des buckets de Google Cloud Storage
-  upload_to_bucket(prix_du_jour,path+prix_du_jour,'prix-essence-csv')
-  upload_to_bucket(valeur100_du_jour,path+valeur100_du_jour,'valeur100-essence-csv')
+  upload_to_bucket(prix_du_jour,path_prix+prix_du_jour,'prix-essence-csv')
+  upload_to_bucket(valeur100_du_jour,path_valeur100+valeur100_du_jour,'valeur100-essence-csv')
+
+execute_all()
