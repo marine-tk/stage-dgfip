@@ -81,12 +81,10 @@ def decomposition_prix_valeur():
     df = df.rename(columns= {'Unnamed: 0' : 'Département'})
     new_df = new_df.rename(columns= {'Unnamed: 0' : 'Département'})
      
-    # Ce chemin est celui pris dans la machine virtuelle
-    path = '/home/marinetk/'
-    df.to_csv(path+'prix_essence/'+'prix' + datetime.today().strftime('%Y-%m-%d') + '.csv')
+    df.to_csv('prix_essence' + datetime.today().strftime('%Y-%m-%d') + '.csv')
     print('Fichier des prix CSV enregistré')
    
-    new_df.to_csv(path+'valeur_100_essence/'+'valeur_100_essence' + datetime.today().strftime('%Y-%m-%d') + '.csv')
+    new_df.to_csv('valeur_100_essence' + datetime.today().strftime('%Y-%m-%d') + '.csv')
     print('Fichier valeur_100 CSV enregistré')
 
 def upload_to_bucket(blob_name, path_to_file, bucket_name):
@@ -113,5 +111,5 @@ def execute_all() :
   decomposition_prix_valeur()
 
   # Transfert vers des buckets de Google Cloud Storage
-  upload_to_bucket(prix_du_jour,path+prix_du_jour,'prix-essence-csv')
-  upload_to_bucket(valeur100_du_jour,path+valeur100_du_jour,'valeur100-essence-csv')
+  upload_to_bucket(prix_du_jour,prix_du_jour,'prix-essence-csv')
+  upload_to_bucket(valeur100_du_jour,valeur100_du_jour,'valeur100-essence-csv')
