@@ -5,6 +5,7 @@ import pandas as pd
 from datetime import datetime
 from google.cloud import storage
 
+######################### Définition des chemins #########################
 # Chemin où le script, key_file.json et le fichier CSV initial se trouvent
 path = "/home/marinetk/scripts/"
 
@@ -14,6 +15,7 @@ path_valeur100 = "/home/marinetk/valeur_100_essence/"
 
 # Dossier contenant les fichiers temporaires
 path_tmp = "/home/marinetk/scripts/tmp/"
+#########################################################################
 
 def departement_price(text) :
     '''
@@ -126,5 +128,7 @@ def execute_all() :
   # Transfert vers des buckets de Google Cloud Storage
   upload_to_bucket(prix_du_jour,path_prix+prix_du_jour,'prix-essence-csv')
   upload_to_bucket(valeur100_du_jour,path_valeur100+valeur100_du_jour,'valeur100-essence-csv')
+    
+#########################################################################
 
 execute_all()
